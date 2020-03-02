@@ -11,12 +11,12 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
-        minSdkVersion 21
+        minSdkVersion 28
         targetSdkVersion 29
     }
 
     dataBinding {
-        enabled true
+        enabled = true
     }
 
     compileOptions {
@@ -28,28 +28,27 @@ android {
 ext {
     buildToolsVersion = "29.0.0"
     compileSdkVersion = 29
-    supportLibVersion = "28.0.0"
 
     appcompatVersion = '1.1.0'
     constraintVersion = '1.1.3'
     constraintlayoutVersion = '1.1.3'
     coreTestingVersion = '2.1.0'
-    coroutineVersion = '1.3.2'
+    coroutineVersion = '1.3.3'
     databindingVersion = '3.1.4'
     legacysupportVersion = '1.0.0'
     materialVersion = '1.0.0'
     okhttpVersion = '4.2.2'
-    retrofitVersion = '2.6.2'
+    retrofitVersion = '2.7.0'
     stethoVersion = '1.5.1'
     viewModelVersion = '2.1.0'
 
-    leakCanaryVersion = '2.0-beta-3'
+    leakCanaryVersion = '2.0'
 
-    stripeTerminalVersion = '1.0.1'
+    // stripeTerminalVersion = 'set via publish.sh'
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 
     api "com.google.android.material:material:$materialVersion"
     implementation "androidx.legacy:legacy-support-v4:$legacysupportVersion"
@@ -80,8 +79,22 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    implementation "com.google.dagger:dagger:2.26"
+    implementation "com.google.guava:guava:28.1-android"
+    implementation "com.jaredrummler:android-device-names:1.1.9"
+    implementation "com.jakewharton.timber:timber:4.7.1"
     // Stripe Terminal library
-    implementation "com.stripe:stripeterminal:$stripeTerminalVersion"
+//    implementation project(path: ":terminalsdk")
+//    implementation project(path: ":terminalcotssdk")
+    // Rootbeer
+    implementation "com.scottyab:rootbeer-lib:0.0.7"
+
+    // SafetyNet
+    implementation "com.google.android.gms:play-services-safetynet:17.0.0"
+    implementation "com.google.protobuf:protobuf-java:3.6.1"
+    implementation "com.google.protobuf:protobuf-java-util:3.6.1"
+    implementation "com.github.framgia:android-emulator-detector:1.4.0"
 
     // Leak canary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"

@@ -19,6 +19,7 @@ import com.stripe.example.network.TokenProvider
 import com.stripe.stripeterminal.Terminal
 import com.stripe.stripeterminal.log.LogLevel
 import com.stripe.stripeterminal.model.external.ConnectionStatus
+import com.stripe.stripeterminal.model.external.DeviceType
 import com.stripe.stripeterminal.model.external.TerminalException
 
 class MainActivity : AppCompatActivity(), NavigationListener {
@@ -89,8 +90,8 @@ class MainActivity : AppCompatActivity(), NavigationListener {
     /**
      * Callback function called once discovery has been selected by the [TerminalFragment]
      */
-    override fun onRequestDiscovery(isSimulated: Boolean) {
-        navigateTo(DiscoveryFragment.TAG, DiscoveryFragment.newInstance(isSimulated))
+    override fun onRequestDiscovery(isSimulated: Boolean, deviceType: DeviceType) {
+        navigateTo(DiscoveryFragment.TAG, DiscoveryFragment.newInstance(isSimulated, deviceType))
     }
 
     /**

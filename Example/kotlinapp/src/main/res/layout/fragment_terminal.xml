@@ -94,19 +94,17 @@
                     android:layout_gravity="start"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
+                    android:paddingBottom="4dp"
                     android:text="@string/device_type"
                     android:paddingTop="40dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/device_type_button"
-                    style="@style/Widget.Example.Button"
+                <Spinner
+                    android:id="@+id/device_type_spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
-                    app:cornerRadius="0dp"
-                    android:textAlignment="textStart"
-                    app:icon="@drawable/ic_right_arrow"
-                    app:iconTint="@color/colorPrimaryDark" />
+                    android:layout_height="40dp"
+                    android:paddingStart="8dp"
+                    style="@style/Widget.Example.Dropdown"
+                    android:selectedItemPosition="@={viewModel.deviceTypePosition}" />
 
                 <Switch
                     android:id="@+id/simulated_switch"

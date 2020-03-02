@@ -31,14 +31,16 @@ import kotlinx.android.synthetic.main.fragment_discovery.view.reader_recycler_vi
 class DiscoveryFragment : Fragment(), DiscoveryListener {
 
     companion object {
+        private const val DEVICE_TYPE = "device_type"
         private const val SIMULATED_KEY = "simulated"
 
         const val TAG = "com.stripe.example.fragment.discovery.DiscoveryFragment"
 
-        fun newInstance(simulated: Boolean): DiscoveryFragment {
+        fun newInstance(simulated: Boolean, deviceType: DeviceType): DiscoveryFragment {
             val fragment = DiscoveryFragment()
             val bundle = Bundle()
             bundle.putBoolean(SIMULATED_KEY, simulated)
+            bundle.putSerializable(DEVICE_TYPE, deviceType)
             fragment.arguments = bundle
             return fragment
         }
@@ -72,7 +74,7 @@ class DiscoveryFragment : Fragment(), DiscoveryListener {
         }
 
         arguments?.let {
-            val config = DiscoveryConfiguration(0, DeviceType.CHIPPER_2X, it.getBoolean(SIMULATED_KEY))
+            val config = DiscoveryConfiguration(0, it.getSerializable(DEVICE_TYPE) as DeviceType, it.getBoolean(SIMULATED_KEY))
             if (viewModel.discoveryTask == null && Terminal.getInstance().connectedReader == null) {
                 viewModel.discoveryTask = Terminal
                         .getInstance()

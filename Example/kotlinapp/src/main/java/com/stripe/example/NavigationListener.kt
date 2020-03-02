@@ -1,5 +1,6 @@
 package com.stripe.example
 
+import com.stripe.stripeterminal.model.external.DeviceType
 import com.stripe.stripeterminal.model.external.Reader
 
 /**
@@ -14,7 +15,7 @@ interface NavigationListener {
     /**
      * Notify the `Activity` that discovery should begin
      */
-    fun onRequestDiscovery(isSimulated: Boolean)
+    fun onRequestDiscovery(isSimulated: Boolean, deviceType: DeviceType)
 
     /**
      * Notify the `Activity` that discovery has been canceled

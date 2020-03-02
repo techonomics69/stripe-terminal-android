@@ -10,7 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Example"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
         <activity android:name="com.stripe.example.MainActivity"
             android:screenOrientation="fullSensor">
             <intent-filter>
@@ -21,4 +22,5 @@
         </activity>
     </application>
 
+    <uses-sdk tools:overrideLibrary="com.stripe.cots" />
 </manifest>
